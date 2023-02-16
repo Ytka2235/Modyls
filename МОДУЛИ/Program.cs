@@ -23,7 +23,6 @@
                     else j++;
                 }
             }
-
         }
         if (min == 10001) Console.WriteLine(-1);
         else Console.WriteLine(min);
