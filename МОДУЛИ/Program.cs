@@ -10,6 +10,7 @@
         {
             array[i] = rnd.Next(1, 10000);
         }
+
         for (int g = 0; g < array.Length; g++)
         {
             if (array[g] % 21 == 0 && min > array[g])
