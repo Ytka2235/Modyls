@@ -3,25 +3,21 @@
     static void Main()
     {
         Random rnd = new Random();
-        int[] array = new int[1000];
-        int min = 20000;
-        int counter = 0;
-
-        for (int i = 0; i < array.Length; i++)
+        int nemberVote = rnd.Next(10,1000);
+        int[] pair = new int[16];
+        for (int i = 0;i < pair.Length;i++)
         {
-            array[i] = rnd.Next(1, 10000);
+            pair[i] = 0;
         }
 
-        for (int i = 0;i<array.Length - 1;i++)
+        for (int i = 1; i <= nemberVote;i++)
         {
-            if (((array[i] % 37 == 0 && array[i+1] % 73 ==0) || (array[i] % 37 == 0 && array[i + 1] % 73 == 0)) && (array[i] - array[i-1] == 1 || array[i] - array[i - 1] == -1))
-            {
-                counter++;
-                if (min > array[i] + array[i + 1]) min = array[i] + array[i + 1];
-            }
+            pair[rnd.Next(1, 16) - 1]++;
         }
 
-        Console.WriteLine(counter);
-        if (counter != 0)Console.WriteLine(min);
+        for(int i = 0;i < pair.Length;i++)
+        {
+            if (pair[i] != 0) Console.WriteLine(i+1 + " " + pair[i]);
+        }
     }
 }
