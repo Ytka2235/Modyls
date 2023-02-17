@@ -4,27 +4,24 @@
     {
         Random rnd = new Random();
         int[] array = new int[1000];
-        int min = 10001;
+        int min = 20000;
+        int counter = 0;
 
         for (int i = 0; i < array.Length; i++)
         {
             array[i] = rnd.Next(1, 10000);
         }
 
-        for (int g = 0; g < array.Length; g++)
+        for (int i = 0;i<array.Length - 1;i++)
         {
-            if (array[g] % 21 == 0 && min > array[g])
+            if (((array[i] % 37 == 0 && array[i+1] % 73 ==0) || (array[i] % 37 == 0 && array[i + 1] % 73 == 0)) && (array[i] - array[i-1] == 1 || array[i] - array[i - 1] == -1))
             {
-                for (int i = 0, j = 0; i < array.Length;)
-                {
-                    if (array[i] * array[j] == array[g]) (i, min) = (1000, array[g]);
-
-                    if (j == array.Length - 1) (i, j) = (i + 1, 0);
-                    else j++;
-                }
+                counter++;
+                if (min > array[i] + array[i + 1]) min = array[i] + array[i + 1];
             }
         }
-        if (min == 10001) Console.WriteLine(-1);
-        else Console.WriteLine(min);
+
+        Console.WriteLine(counter);
+        if (counter != 0)Console.WriteLine(min);
     }
 }
